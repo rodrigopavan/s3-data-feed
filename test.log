@@ -1,0 +1,11 @@
+
+aws --endpoint-url=http://localhost:4572 s3 mb s3://march
+aws --endpoint-url=http://localhost:4576 sns create-topic --name filecreate
+aws --endpoint-url=http://localhost:4576 sqs create-queue --queue-name march
+aws --endpoint-url=http://localhost:4566 sns subscribe --topic-arn arn:aws:sns:us-east-1:000000000000:filecreate --protocol sqs --notification-endpoint arn:aws:sqs:elasticmq:000000000000:march
+aws --endpoint-url=http://localhost:4566 s3api put-bucket-notification-configuration --bucket march --notification-configuration file://notification.json
+aws --endpoint-url=http://localhost:4572 s3 cp test.csv s3://march
+aws --endpoint-url=http://localhost:4576 sqs receive-message --queue-url http://localhost:4576/queue/march
+
+arn:aws:sqs:elasticmq:000000000000:march
+arn:aws:sns:us-east-1:000000000000:filecreate
