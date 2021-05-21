@@ -39,7 +39,7 @@ There's a few ENV vars that can be used in this application:
 
 During the application startup it will automatically create a SQS and subscribe it to SNS topic.
 
-##how to use
+## how to use
 
 With application running, you can use curl to consume events:
 ```
