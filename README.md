@@ -41,7 +41,7 @@ During the application startup it will automatically create a SQS and subscribe 
 
 ## how to use
 
-With application running, you can use curl to consume events:
+With application running (`go run .`), you can use curl to consume events:
 ```
 curl localhost:3000
 ```
