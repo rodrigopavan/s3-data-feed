@@ -20,10 +20,10 @@ aws --endpoint-url=http://localhost:4566 s3 mb s3://my-bucket
 aws --endpoint-url=http://localhost:4566 sns create-topic --name filecreate
 
 #configure Event Notification of S3 (you can use the notification.json on this repo as a example)
-aws --endpoint-url=http://localhost:4566 s3api put-bucket-notification-configuration --bucket march --notification-configuration file://notification.json
+aws --endpoint-url=http://localhost:4566 s3api put-bucket-notification-configuration --bucket my-bucket --notification-configuration file://notification.json
 
 #to send files to S3, you can use
-aws --endpoint-url=http://localhost:4572 s3 cp test.csv s3://my-bucket
+aws --endpoint-url=http://localhost:4566 s3 cp test.csv s3://my-bucket
 
 ```
 
@@ -48,7 +48,7 @@ curl localhost:3000
 
 After that, send a file to S3:
 ```
-aws --endpoint-url=http://localhost:4572 s3 cp test.csv s3://my-bucket
+aws --endpoint-url=http://localhost:4566 s3 cp test.csv s3://my-bucket
 ```
 
 You should see the file content be delivered in the curl execution.
